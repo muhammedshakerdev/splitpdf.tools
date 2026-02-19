@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum FileStatus {
+  PENDING
+  UPLOADED
+  AVAILABLE
+  FAILED
+  DELETED
+}
+
+enum JobStatus {
+  PENDING
+  ENQUEUED
+  PROCESSING
+  DONE
+  FAILED
+}
+
+model File {
+  id        String     @id @default(uuid()) @db.Uuid
+  name      String
+  size      Int
+  status    FileStatus
+  key       String     @unique
+  bucket    String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  jobs      Job[]
+
+  @@map("file")
+}
+
+model Job {
+  id        String     @id @default(uuid()) @db.Uuid
+  status    JobStatus  @default(PENDING)
+
+  fileId    String     @db.Uuid
+  inputFile File       @relation(fields: [fileId], references: [id], onDelete: Cascade)
+
+  splits       Int[]
+  outputFiles String[] @db.Uuid
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("job")
+}
