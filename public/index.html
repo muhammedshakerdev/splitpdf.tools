@@ -4,15 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF split</title>
+    <link rel="stylesheet" href="./assets/index.css">
 </head>
-<body>
-    <form id="upload-form"> 
-        <label>Select a file</label>
-        <input type="file" id="file">
-        <br>
-        <button id="upload-button">upload</button>
-        <span id="upload-status" style="display: none;">Uploading..</span>
-    </form>
-    <script src="./index.js"></script>
+<body class="dark">
+    <div class="app">
+        <div class="upload" id="select-file-form">
+            <h2 class="upload__title">File Upload</h2>
+            <p class="upload__description">Please select a pdf file</p>
+            <form id="upload__form"> 
+                <div class="upload__form__file">
+
+                    <div class="upload__form__file__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload-icon lucide-upload"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
+                    </div>
+
+                    <p class="upload__form__file__p">drag and drop here <br> <span>OR</span> </p>
+
+                    <button class="upload__form__file__browse-files-btn">
+                        browse files
+                        <input id="file-input" class="upload__form__file__input" type="file">
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="upload" id="upload-form" style="display: none;">
+            <h2 class="upload__title">File Upload</h2>
+            <p class="upload__description">Upload selected file</p>
+            <div class="upload__status">
+                <div class="upload__status__file">
+                    <div class="upload__status__file__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#303030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                    </div>
+                    <div class="upload__status__file__metadata">
+                        <div id="file-metadata-name" class="upload__status__file__metadata__name">
+                            file-name.pdf
+                        </div>
+                        <div id="file-metadata-size" class="upload__status__file__metadata__size">
+                            3.1MB
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload__footer">
+                <button class="upload__footer__cancel-btn" id="cancel-selection-btn">cancel</button>
+                <button class="upload__footer__upload-btn"loading id="upload-btn">
+                    <span class="upload__footer__upload-btn__text">upload</span>
+                    <div class="upload__footer__upload-btn__loader">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle-icon lucide-loader-circle"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/index.js"></script>
 </body>
 </html>
