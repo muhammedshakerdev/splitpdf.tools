@@ -6,27 +6,30 @@
     <title>PDF split</title>
     <link rel="stylesheet" href="./assets/index.css">
 </head>
-<body class="dark">
+<body>
     <div class="app">
-        <div class="upload" id="select-file-form">
+        <section class="upload" id="select-file-form">
             <h2 class="upload__title">File Upload</h2>
             <p class="upload__description">Please select a pdf file</p>
             <form id="upload__form"> 
-                <div class="upload__form__file">
+                <div class="upload__form__file" id="file-input-group">
 
                     <div class="upload__form__file__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload-icon lucide-upload"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
                     </div>
 
-                    <p class="upload__form__file__p">drag and drop here <br> <span>OR</span> </p>
+                    <p class="upload__form__file__highlighted-text">drag and drop here</p>
 
-                    <button class="upload__form__file__browse-files-btn">
-                        browse files
-                        <input id="file-input" class="upload__form__file__input" type="file">
-                    </button>
+                    <p>or, <span class="upload__form__file__highlighted-text">browse files</span></p>
+                    
+                    <div class="upload__form__file__drop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    </div>
+                    <input id="file-input" type="file" hidden>
                 </div>
+               
             </form>
-        </div>
+        </section>
         <div class="upload" id="upload-form" style="display: none;">
             <h2 class="upload__title">File Upload</h2>
             <p class="upload__description">Upload selected file</p>
@@ -56,6 +59,7 @@
             </div>
         </div>
     </div>
+    <div class="toaster"></div>
     <script src="./assets/index.js"></script>
 </body>
 </html>

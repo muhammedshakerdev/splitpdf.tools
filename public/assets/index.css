@@ -45,7 +45,43 @@ body{
     justify-content: center;
     align-items: center;
     gap: 4px;
+    position: relative;
+    transform: border-color .6s ease-in-out;
+    cursor: pointer;
+
 }
+
+.upload__form__file:hover{
+    border-color: #FFFFFFA6;
+}
+
+.upload__form__file.dragover  > *{
+    display: none;
+}
+
+.upload__form__file__drop-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF0D;
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+    border-radius: 50%;
+    margin-block-end: .5em;
+    display: none;
+}
+
+.upload__form__file__drop-icon svg{
+    width: 32px;
+    height: 32px;
+}
+
+.upload__form__file.dragover .upload__form__file__drop-icon{
+    display: flex;
+    
+}
+
 
 
 .upload__form__file__icon{
@@ -66,36 +102,12 @@ body{
 }
 
 
-.upload__form__file__p{
-    text-align: center;
+.upload__form__file__highlighted-text{
     font-size: 14px;
+    font-weight: 500;
+    text-align: center;
 }
 
-.upload__form__file__p span{
-    font-weight: bold;
-    display: block;
-    margin-block: .4em;
-}
-
-
-.upload__form__file__browse-files-btn{
-    background-color: white;
-    color: black;
-    padding: .8em 1em;
-    border:  none;
-    border-radius: 6px;
-    font: 'Inter' 17px;
-    cursor: pointer;
-    position: relative;
-}
-
-
-.upload__form__file__input{
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-}
 
 .upload__footer{
     padding: .5em 0;
@@ -179,3 +191,93 @@ body{
         transform: rotate(360deg);
     }
 }
+
+
+.toaster:has(.toast){
+    height: 176px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toast{
+    width: 356px;
+    height: 76px;
+    background-color: #171717;
+    padding: 1em;
+    border: 1px dashed #FFFFFF3B;
+    border-radius: 8px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    animation: show-toast 620ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    hide-toast 2000ms cubic-bezier(0.34, 1.56, 0.64, 1) 4620ms forwards;
+    display: none;
+}
+
+.toast:first-of-type{
+    z-index: 1000;
+    display: flex;
+}
+
+.toast:nth-of-type(2){
+    transform: translateY(.5em) scale(.95);
+    z-index: 100;
+    display: flex;
+}
+
+.toast:nth-of-type(3){
+    transform: translateY(1em) scale(.9);
+    z-index: 10;
+    display: flex;
+}
+
+.toast__content{
+    flex: 1;
+}
+
+.toast__content__title{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: .5em;
+}
+
+.toast__content__text{
+    font-size: 14px;
+}
+
+.toast__close-btn{
+    background-color: #FFFFFF;
+    font-size: 12px;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+
+
+
+@keyframes show-toast{
+   from{
+     top: -100%;
+   }
+
+   to{
+     top: 1em;
+   }
+}
+
+
+
+
+
+@keyframes hide-toast {
+    to{
+        top: -100%;
+    }
+}
+
+
