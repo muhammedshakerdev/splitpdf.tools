@@ -47,6 +47,7 @@ file_input_group.addEventListener('drop', event =>{
 
     if(files.length > 1){
         pushNotification("Multiple files selected", "Please select one file");
+        return;
     }
 
     const file = files[0];
